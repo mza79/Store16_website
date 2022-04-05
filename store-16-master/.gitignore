@@ -1,0 +1,16 @@
+*~
+.vagrant
+
+*.pyc
+
+static/admin
+
+Gemfile.lock
+log/*
+.bundle
+
+
+.DS_Store
+
+store16/store/migrations/*
+media/uploads/product/*

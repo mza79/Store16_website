@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Purchase History</title>
+</head>
+<body>
+{% load static %}
+<link rel="stylesheet" href="{%static 'purchase/index.css' %}" type="text/css">
+
+<h1> Purchase History </h1>
+{% if books_date %}
+    <table>
+	    <th>Book</th>
+	    <th>Name</th>
+	    <th>Price</th>
+	    <th>Date Bought</th>
+
+
+	    {% for book,date,price in books_date %}
+
+			<tr>
+				<td> <a href="/store/product/{{ book.id }}"> <img src="{{ book.image.url }}" alt="{{ book.title }}" width="110" height="140"/></a> </td>
+				<td><a href="/store/purchase/{{ book.id }}/">{{ book.title }} </a></td>
+
+				<td> ${{ price }} </td> 
+				<td>  {{ date }} </td> 
+				<td> <a href='/store/purchase/{{book.id}}/removeHistory/'> <button type='remove' class="removeBtn"> remove from history</button> </a></td>
+			</tr>
+	    {% endfor %}
+
+	    <tr>
+	    	<td colspan="6" align="right">Total:</td>
+	    	<td>{{ total }} </td>
+	    </tr>
+    </table>
+
+{% else %}
+    <p style = " text-align: center; margin-top: 3em; ">No History.</p>
+{% endif %}
+</body>
+</html>
+{% endblock %}

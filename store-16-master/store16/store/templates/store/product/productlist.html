@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="{%static 'productlist/css/style.css' %}" media="screen">
+<title>Product List</title>
+</head>
+<body>
+    {% block content %} 
+<div class = "container">
+<h1>Product List</h1>
+<link rel="stylesheet" href="{%static 'productlist/css/style.css' %}" media="screen">
+{% if wishlist %}
+<div class="carousel js-flickity"
+  data-flickity-options='{ "wrapAround": true }'>
+    {% for product in wishlist %}
+        {% if product.products.id %}
+        <div class="carousel-cell"><a href="/store/product/{{ product.products.id }}"><div class='wishlistCell'><img src="{{ product.products.image.url }}" alt="{{ product.products.title }}" width="275" height="350"/><br> {{ product.products.title}}<br>{{ product.products.author}}</div></a></div>
+        {% else %}
+        <div class="carousel-cell"><a href="/store/product/{{ product.id }}"> <img src="{{ product.image.url }}" alt="{{ product.title }}" width="275" height="350"/><br> {{ product.title}}<br>{{ product.author}}</a></div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% else %}
+    <p id="nowishlist">No products added to wishlist.</p>
+{% endif %}
+{% if productList %}
+<br><br>
+<div class="grid-container">
+{% for product in page_obj %}
+    <div class="grid-item"><a href="/store/product/{{ product.id }}"> <img src="{{ product.image.url }}" alt="{{ product.title }}" width="275" height="350"/><br> {{ product.title}}<br>{{ product.author}}</a>
+        <form action="/store/product/{{ product.id }}/addtowishlist" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="productId" value="{{ product.id }}">
+            <input type="hidden" name="next" value="{{ request.path }}">
+            <input type="submit" class="btn" value="Add To Wishlist" name="addtowishlist">
+        </form>
+    </div>
+        
+{% endfor %}
+{% endif %}
+</div>
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+<a href="/store/product/createproduct">Create Product (Seller option)</a>
+<script src="{%static 'productlist/js/flickity.pkgd.min.js' %}"></script>
+</div>
+{% endblock %}
+</body>
+</html>

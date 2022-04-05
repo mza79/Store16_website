@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}  
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Create Product</title>
+</head>
+<body>
+<div class = "container">
+<h1>Create Product</h1>
+<form method="post"  enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class ="row">
+        <div class ="col-6">
+            {{form.title|as_crispy_field}}
+        </div>
+        <div class ="col-6">
+            {{form.author|as_crispy_field}}
+        </div>
+        <div class ="col-6">
+            {{form.publisher|as_crispy_field}}
+        </div>
+    </div>
+    <div class ="row">
+        <div class ="col-6">
+            {{form.genre|as_crispy_field}}
+        </div>
+        <div class ="col-6">
+            {{form.subject|as_crispy_field}}
+        </div>
+        <div class ="col-6">
+            {{form.series|as_crispy_field}}
+        </div>
+    </div>
+        <div class ="row">
+            <div class ="col-6">
+                {{form.isbn|as_crispy_field}}
+            </div>
+            <div class ="col-6">
+                {{form.image|as_crispy_field}}
+            </div>
+        </div>
+    <div>
+        {{form.abstract|as_crispy_field}}
+    </div>
+    <br/>
+    <button type ="submit" class="btn btn-success">Submit</button>
+    
+</form>
+<a href="/store/product/productlist">Back to Products</a>
+
+</div>
+</body>
+</html>
+
+{% endblock %}

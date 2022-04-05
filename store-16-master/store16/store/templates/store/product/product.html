@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}  
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Product</title>
+</head>
+<div class = "container">
+<body>
+{% if product %}
+<h1>{{ product.title }}</h1>
+<img src="{{ product.image.url }}" alt="{{ product.title }}" width="275" height="350"/>
+{% if product.rating %}
+<p>Rating: {{ product.rating }}/5</p>
+{% else %}
+<p>Product not rated!</p>
+{% endif %}
+<p>Author: {{ product.author }}</p>
+<p>Publisher: {{ product.publisher }}</p>
+<p>Series: {{ product.series }}</p>
+<p>Genre: {{ product.genre }}</p>
+<p>Subject: {{ product.subject }}</p>
+<p>ISBN: {{ product.isbn }}</p>
+<p>Abstract: {{ product.abstract }}</p>
+{% for av_pr in available_product%}
+	<p>Price: ${{av_pr.price}}</p>
+	<p>Seller Name: {{av_pr.sellerName}}</p>
+{% endfor %}
+{% else %}
+    <p>No Product.</p>
+{% endif %}
+
+
+<p><a href="/store/product/productlist">Back to Products</a>
+| <a href="/store/product/{{ product.id }}/reviewlist">See all Reviews</a>
+| <a href="/store/product/{{ product.id }}/review">Create Review</a></p>
+</body>
+</div>
+</html>
+
+{% endblock %}
+

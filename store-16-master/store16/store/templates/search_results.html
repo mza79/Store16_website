@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>title</title>
+</head>
+<body>
+	{% block content %} 
+	 <h1>Search Page</h1>
+
+{% if submitbutton == 'Search' and request.GET.q != '' %}
+{%  if results%}
+<h1>Results for <b>"{{ request.GET.q }}"</b></h1>
+<br/><br/>
+
+{% for product in results %}
+<div>
+	<a href="/store/product/{{ product.product.id }}"> 
+		<img src="{{ product.product.image.url }}" alt="{{ product.product.title }}" width="275" height="350"/><br> 
+		{{ product.product.title}} <br>
+		{{ product.product.author}} <br>
+		{{ product.sellerName}}
+	</a>
+</div>
+<br/>
+<br/>
+
+{% endfor %}
+{% else %}
+No search results for this queryd
+{% endif %}
+{% endif %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>New Customer Review</title>
+</head>
+<body>
+<div class ="container">
+<h1>New Customer Review</h1>
+
+<form method="post" action="/store/product/{{ product.id }}/review">
+{% csrf_token %}
+<dl class="form">
+<dt><label for="id_username">Username: <span class="required">*</span></label></dt><dd>
+<div class="field"><input type="text" name="username" maxlength="100" required id="id_username" readonly value="{{ user.get_username }}"></div>
+</dd>
+
+<dt><label for="id_rating">Rating (1-5): <span class="required">*</span></label></dt><dd>
+<div class="field"><input type="number" name="rating" min="1" max="5" required id="id_rating"></div>
+</dd>
+
+<dt><label for="id_feedback">Feedback:</label></dt><dd>
+<div class="field"><textarea name="feedback" cols="50" rows="10" id="id_feedback">
+</textarea></div>
+<div class="helptext">500-character review of the product</div>
+</dd>
+</dl>
+
+<p class="helptext"><span class="required">*</span> This field is required.</p>
+<p><input type="submit" value="Create Review" /></p>
+</form>
+</div>
+</body>
+</html>
+
+{% endblock %}

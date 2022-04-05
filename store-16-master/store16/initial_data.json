@@ -1,0 +1,109 @@
+[
+{
+  "model": "store.available_product",
+  "pk": 1,
+  "fields": {
+    "price": "22.55",
+    "sellerName": "Seller1",
+    "product": 5
+  }
+},
+{
+  "model": "store.available_product",
+  "pk": 2,
+  "fields": {
+    "price": "19.77",
+    "sellerName": "Seller2",
+    "product": 3
+  }
+},
+{
+  "model": "store.available_product",
+  "pk": 3,
+  "fields": {
+    "price": "18.44",
+    "sellerName": "Seller1",
+    "product": 4
+  }
+},
+{
+  "model": "store.product",
+  "pk": 3,
+  "fields": {
+    "title": "An Innocent Client",
+    "author": "Scott Pratt",
+    "publisher": "Phoenix flying LLC",
+    "subject": null,
+    "genre": "Action and Adventure",
+    "series": "Joe Dillard",
+    "rating": null,
+    "isbn": "B009WQ9YMS",
+    "image": "uploads/product/AnInnocentClient_RS6SbNB.jpg",
+    "abstract": null
+  }
+},
+{
+  "model": "store.product",
+  "pk": 4,
+  "fields": {
+    "title": "The Girl Who Lived",
+    "author": "Christopher Greyson",
+    "publisher": "Greyson Media",
+    "subject": null,
+    "genre": "Serial Killer Thrillers",
+    "series": null,
+    "rating": null,
+    "isbn": "B076FNQWTF",
+    "image": "uploads/product/TheGirlWhoLived_CxiqKBA.jpg",
+    "abstract": null
+  }
+},
+{
+  "model": "store.product",
+  "pk": 5,
+  "fields": {
+    "title": "American Dirt",
+    "author": "Jeanine Cummins",
+    "publisher": "Flatiron Books",
+    "subject": null,
+    "genre": "Hispanic American Literature",
+    "series": null,
+    "rating": null,
+    "isbn": "978-125075408",
+    "image": "uploads/product/AmericanDirt_Re42fBY.jpg",
+    "abstract": null
+  }
+},
+{
+  "model": "store.product",
+  "pk": 6,
+  "fields": {
+    "title": "Can't Hurt Me",
+    "author": "David Goggins",
+    "publisher": "Lioncrest Publishing",
+    "subject": null,
+    "genre": "Marathon Running",
+    "series": null,
+    "rating": null,
+    "isbn": "978-154451229",
+    "image": "uploads/product/CantHurtMe_v3FmfN2.jpg",
+    "abstract": null
+  }
+},
+{
+  "model": "store.product",
+  "pk": 7,
+  "fields": {
+    "title": "Get Rich",
+    "author": "K. Connors",
+    "publisher": "CreateSpace Independent Publishing Platform",
+    "subject": null,
+    "genre": "Guides to Success",
+    "series": null,
+    "rating": null,
+    "isbn": "1973817438",
+    "image": "uploads/product/GetRich_r98aEdk.jpg",
+    "abstract": null
+  }
+}
+]

@@ -1,0 +1,48 @@
+
+{% extends 'base.html' %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+{% block content %}  
+
+<title>Available Products</title>
+</head>
+<div class = "container">
+<body>
+	<h1>Available Products</h1>
+	{% if available_product %}
+	<h2>{{ available_product.product.title }}</h2>
+	<div >
+		<img src="{{ available_product.product.image.url }}" alt="{{ available_product.product.title }}" width="275" height="350"/>
+		<br> 
+		{{ available_product.product.title}}
+		<br>
+		{{ available_product.product.author}}
+	</a>
+	</div>
+	{% if available_product.product.rating %}
+	<p>Rating: {{ available_product.product.rating }}/5</p>
+	{% else %}
+	<p>Product not rated!</p>
+	{% endif %}
+	<p>Author: {{ available_product.product.author }}</p>
+	<p>Publisher: {{ available_product.product.publisher }}</p>
+	<p>ISBN: {{ available_product.product.isbn }}</p>
+	<p>Abstract: {{ available_product.product.abstract }}</p>
+	<p>Price: ${{available_product.price}}</p>
+	<p>Seller Name: {{available_product.sellerName}}</p>
+	{% else %}
+	    <p>No Available Products</p>
+	{% endif %}
+</body>
+</div>
+</html>
+
+
+{%  endblock  %}}

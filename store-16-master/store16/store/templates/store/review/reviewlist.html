@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Customer Reviews</title>
+</head>
+<body>
+
+<div class ="container">
+<h1>Review List</h1>
+{% if reviewlist %}
+    <ul>
+    {% for review in reviewlist %}
+        <li>
+            <p>User: {{ review.username }}</p>
+            <p>Rating: {{ review.rating }}/5</p>
+            <p>Feedback:</p>
+            <p>{{ review.feedback }}</p>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No reviews are available.</p>
+{% endif %}
+
+<p><a href="/store/product/{{ product.id }}">Back to Product</a></p>
+</div>
+</body>
+</html>
+
+{% endblock %}

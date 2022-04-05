@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ShoppingCart</title>
+</head>
+<body>
+{% load static %}
+<link rel="stylesheet" href="{%static 'purchase/index.css' %}" type="text/css">
+
+<h1> Shopping Cart </h1>
+{% if books %}
+    <table>
+	    <th>Book</th>
+	    <th>Name</th>
+	    <th>Author</th>
+	    <th>Price</th>
+        <th>Rating</th>
+
+	    {% for book,price in books %}
+			<tr>
+				<td> <a href="/store/product/{{ book.id }}"> <img src="{{ book.image.url }}" alt="{{ book.title }}" width="110" height="140"/></a> </td>
+				<td><a href="/store/purchase/{{ book.id }}/">{{ book.title }} </a></td>
+				<td> by {{ book.author }} </td>
+				<td> ${{ price }} </td> <!-- book.price --> 
+                <td> {{ book.rating }} </td>
+				<td> <a href='/store/purchase/{{book.id}}/remove/'> <button type='remove' class="removeBtn"> remove</button> </a></td>
+			</tr>
+	    {% endfor %}
+
+	    <tr>
+	    	<td colspan="6" align="right">Total:</td>
+	    	<td>{{ total }} </td>
+	    </tr>
+    </table>
+    <a href='/store/purchase/pay/' > <button style="margin-left: 71%; padding:0.5em;font-size: 16pt;" > Pay Now!</button> </a>
+{% else %}
+    <p>No books in Shoping cart.</p>
+{% endif %}
+</body>
+</html>
+{% endblock %}
+
+

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Payment</title>
+</head>
+<body>
+
+{% load static %}
+<link rel="stylesheet" href="{%static 'purchase/pay.css' %}" type="text/css">
+
+<p class = 'summary'> {{items}} items, Total of: ${{total}}</sp>
+
+<div class='paymentBox'>
+    <div class='checkout'>
+        <h2 >Checkout</h2>
+        <p>Please Enter Your Credit Card Information</p>
+        <!-- <input type="tel" autocomplete="cc-number" id="cc-number" ccNum> -->
+        <div>
+            {{credit_card}} 
+            <label for='credit'>Credit Card:</label>
+            <input type='tel' id='credit'> <br> <br>
+        </div>
+
+        <div>
+            {{name}} 
+            <label for='name'> Cardholder Name:</label>
+            <input type='tel' id='name'> <br> <br>
+        </div>
+    
+        <div>
+            {{expiration_date}} 
+            <label for='exp_date'> Expiration Date:</label>
+            <input type='tel' id='exp_date'> <br> <br>
+        </div>
+        
+        <div> 
+            {{cvv}} 
+            <label for='cvv'>CVV:</label>
+            <input type='tel' id='cvv'> 
+        </div>
+
+        <a href='/store/purchase/finish_payment/'> <button type='payment' class="paymentBtn"> Pay </button> </a>
+
+
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}

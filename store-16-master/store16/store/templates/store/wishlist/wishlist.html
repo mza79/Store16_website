@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="{%static 'wishlist/css/style.css' %}" media="screen">
+<title>Wishlist</title>
+</head>
+<body>
+    
+    {% block content %}
+    <div class ="container">
+    <h1>Wishlist</h1>
+    {% if wishlist %}
+    <div class="grid-container">
+        {% for product in wishlist %}
+            <div class="grid-item"><a href="/store/product/{{ product.products.id }}"> <img src="{{ product.products.image.url }}" alt="{{ product.products.title }}" width="275" height="350"/><br> {{ product.products.title}}<br>{{ product.products.author}}</a></div>
+            <form action="/store/product/{{ product.products.id }}/removefromwishlist" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="productId" value="{{ product.id }}">
+                <input type="hidden" name="next" value="{{ request.path }}">
+                <input type="submit" class="btn" value="Remove From Wishlist" name="removefromwishlist">
+            </form>
+        {% endfor %}
+    {% endif %}
+    <a href="/store/product/productlist">Back to Products</a>
+</div>
+</body>
+</html>
+
+{% endblock %}

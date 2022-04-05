@@ -1,0 +1,49 @@
+
+{% extends 'base.html' %}
+
+<!doctype html>
+<html lang="en">
+
+<link rel = "stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="
+sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+{% block content %} 
+{% load crispy_forms_tags %}
+<div class ="container">
+
+
+<h2>Login</h2>
+
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+{{ form|crispy }}
+</br>
+<button type ="submit" class="btn btn-success">login</button>
+
+<input type="hidden" name="next" value="{{ next }}">
+</form>
+
+<p>Need an account? Register <a href='/store/register'>here</a></p>
+</div>
+
+{% endblock %}
+
+</html>
